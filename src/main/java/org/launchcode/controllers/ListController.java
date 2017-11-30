@@ -20,6 +20,7 @@ public class ListController {
 
     public ListController () {
         columnChoices.put("core competency", "Skill");
+        columnChoices.put("name", "Title");
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
         columnChoices.put("position type", "Position Type");
@@ -58,6 +59,7 @@ public class ListController {
 
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
+        model.addAttribute("columns", ListController.columnChoices);
         model.addAttribute("jobs", jobs);
 
         return "list-jobs";
